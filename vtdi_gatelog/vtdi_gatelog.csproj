@@ -52,8 +52,38 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GateOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GateOut.Designer.cs">
+      <DependentUpon>GateOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GateIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GateIn.Designer.cs">
+      <DependentUpon>GateIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogInForm.Designer.cs">
+      <DependentUpon>LogInForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GateIn.resx">
+      <DependentUpon>GateIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GateOut.resx">
+      <DependentUpon>GateOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogInForm.resx">
+      <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
