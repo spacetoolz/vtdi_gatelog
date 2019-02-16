@@ -32,7 +32,7 @@
             this.lbtext = new System.Windows.Forms.Label();
             this.grpbxlogin = new System.Windows.Forms.GroupBox();
             this.tbusername = new System.Windows.Forms.TextBox();
-            this.maskedtbPassword = new System.Windows.Forms.MaskedTextBox();
+            this.tbPassword = new System.Windows.Forms.MaskedTextBox();
             this.lbPassword = new System.Windows.Forms.Label();
             this.lbUsername = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -55,14 +55,14 @@
             // 
             this.grpbxlogin.BackColor = System.Drawing.Color.Transparent;
             this.grpbxlogin.Controls.Add(this.tbusername);
-            this.grpbxlogin.Controls.Add(this.maskedtbPassword);
+            this.grpbxlogin.Controls.Add(this.tbPassword);
             this.grpbxlogin.Controls.Add(this.lbPassword);
             this.grpbxlogin.Controls.Add(this.lbUsername);
             this.grpbxlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpbxlogin.Location = new System.Drawing.Point(477, 200);
             this.grpbxlogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpbxlogin.Name = "grpbxlogin";
-            this.grpbxlogin.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.grpbxlogin.Padding = new System.Windows.Forms.Padding(5);
             this.grpbxlogin.Size = new System.Drawing.Size(459, 162);
             this.grpbxlogin.TabIndex = 2;
             this.grpbxlogin.TabStop = false;
@@ -76,14 +76,14 @@
             this.tbusername.Size = new System.Drawing.Size(207, 41);
             this.tbusername.TabIndex = 3;
             // 
-            // maskedtbPassword
+            // tbPassword
             // 
-            this.maskedtbPassword.Location = new System.Drawing.Point(245, 95);
-            this.maskedtbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.maskedtbPassword.Name = "maskedtbPassword";
-            this.maskedtbPassword.PasswordChar = '*';
-            this.maskedtbPassword.Size = new System.Drawing.Size(207, 41);
-            this.maskedtbPassword.TabIndex = 2;
+            this.tbPassword.Location = new System.Drawing.Point(245, 95);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(207, 41);
+            this.tbPassword.TabIndex = 2;
             // 
             // lbPassword
             // 
@@ -113,6 +113,7 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Log In";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnReset
             // 
@@ -152,7 +153,7 @@
         private System.Windows.Forms.Label lbtext;
         private System.Windows.Forms.GroupBox grpbxlogin;
         private System.Windows.Forms.TextBox tbusername;
-        private System.Windows.Forms.MaskedTextBox maskedtbPassword;
+        private System.Windows.Forms.MaskedTextBox tbPassword;
         private System.Windows.Forms.Label lbPassword;
         private System.Windows.Forms.Label lbUsername;
         private System.Windows.Forms.Button btnLogin;

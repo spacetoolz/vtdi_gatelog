@@ -16,5 +16,23 @@ namespace vtdi_gatelog
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = tbusername.Text;
+            var password = tbPassword.Text;
+
+            if (username != "admin" || password != "pass")
+            {
+                MessageBox.Show("Invalid Credentials");
+            }
+            else
+                {
+                MessageBox.Show($"Welcome {username}");
+                var parent = (Form1)this.MdiParent;
+                Close();
+                }
+
+        }
     }
 }

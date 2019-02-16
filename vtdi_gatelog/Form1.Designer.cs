@@ -53,7 +53,7 @@
             this.gateLogsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 52);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 49);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,7 +64,7 @@
             this.gateReportsToolStripMenuItem,
             this.userLogsToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(132, 48);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(132, 45);
             this.helpToolStripMenuItem.Text = "Reports";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
@@ -94,7 +94,7 @@
             this.userManagementToolStripMenuItem,
             this.schedulingToolStripMenuItem});
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(103, 48);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(103, 45);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // logInToolStripMenuItem
@@ -125,28 +125,28 @@
             this.gateInOutToolStripMenuItem,
             this.gateOutToolStripMenuItem});
             this.gateLogsToolStripMenuItem.Name = "gateLogsToolStripMenuItem";
-            this.gateLogsToolStripMenuItem.Size = new System.Drawing.Size(163, 48);
+            this.gateLogsToolStripMenuItem.Size = new System.Drawing.Size(163, 45);
             this.gateLogsToolStripMenuItem.Text = "Gate Logs";
             this.gateLogsToolStripMenuItem.Click += new System.EventHandler(this.gateLogsToolStripMenuItem_Click);
             // 
             // guestListToolStripMenuItem
             // 
             this.guestListToolStripMenuItem.Name = "guestListToolStripMenuItem";
-            this.guestListToolStripMenuItem.Size = new System.Drawing.Size(396, 46);
+            this.guestListToolStripMenuItem.Size = new System.Drawing.Size(261, 46);
             this.guestListToolStripMenuItem.Text = "Guest List";
             this.guestListToolStripMenuItem.Click += new System.EventHandler(this.guestListToolStripMenuItem_Click);
             // 
             // gateInOutToolStripMenuItem
             // 
             this.gateInOutToolStripMenuItem.Name = "gateInOutToolStripMenuItem";
-            this.gateInOutToolStripMenuItem.Size = new System.Drawing.Size(396, 46);
+            this.gateInOutToolStripMenuItem.Size = new System.Drawing.Size(261, 46);
             this.gateInOutToolStripMenuItem.Text = "Gate In";
             this.gateInOutToolStripMenuItem.Click += new System.EventHandler(this.gateInOutToolStripMenuItem_Click);
             // 
             // gateOutToolStripMenuItem
             // 
             this.gateOutToolStripMenuItem.Name = "gateOutToolStripMenuItem";
-            this.gateOutToolStripMenuItem.Size = new System.Drawing.Size(396, 46);
+            this.gateOutToolStripMenuItem.Size = new System.Drawing.Size(261, 46);
             this.gateOutToolStripMenuItem.Text = "Gate Out";
             this.gateOutToolStripMenuItem.Click += new System.EventHandler(this.gateOutToolStripMenuItem_Click);
             // 
@@ -160,6 +160,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "VTDI Gate Log Application";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

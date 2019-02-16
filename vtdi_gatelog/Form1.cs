@@ -78,5 +78,10 @@ namespace vtdi_gatelog
             Gate.MdiParent = this;
             Gate.Show();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
