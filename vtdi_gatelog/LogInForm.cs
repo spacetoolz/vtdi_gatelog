@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace vtdi_gatelog
+
 {
+
     public partial class LogInForm : Form
     {
         public LogInForm()

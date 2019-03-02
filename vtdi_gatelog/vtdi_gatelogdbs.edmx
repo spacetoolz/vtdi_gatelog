@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="vtdi_gatelogdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GateLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeIn" Type="datetime" />
+          <Property Name="TimeOut" Type="datetime" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VehicleTypeId" Type="int" Nullable="false" />
+          <Property Name="PlateNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PurposeId" Type="int" Nullable="false" />
+          <Property Name="ItemsToDeclareID" Type="int" Nullable="false" />
+          <Property Name="VistiorTypeId" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ItemsToDeclare">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurposeOfVisit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="genderid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_GateLog_ItemsToDeclare">
+          <End Role="ItemsToDeclare" Type="Self.ItemsToDeclare" Multiplicity="1" />
+          <End Role="GateLog" Type="Self.GateLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemsToDeclare">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GateLog">
+              <PropertyRef Name="ItemsToDeclareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GateLog_PurposeOfVisit">
+          <End Role="PurposeOfVisit" Type="Self.PurposeOfVisit" Multiplicity="1" />
+          <End Role="GateLog" Type="Self.GateLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurposeOfVisit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GateLog">
+              <PropertyRef Name="PurposeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GateLog_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="GateLog" Type="Self.GateLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GateLog">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GateLog_VehicleType">
+          <End Role="VehicleType" Type="Self.VehicleType" Multiplicity="1" />
+          <End Role="GateLog" Type="Self.GateLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GateLog">
+              <PropertyRef Name="VehicleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="vtdi_gatelogdbModelStoreContainer">
+          <EntitySet Name="GateLog" EntityType="Self.GateLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemsToDeclare" EntityType="Self.ItemsToDeclare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurposeOfVisit" EntityType="Self.PurposeOfVisit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GateLog_ItemsToDeclare" Association="Self.FK_GateLog_ItemsToDeclare">
+            <End Role="ItemsToDeclare" EntitySet="ItemsToDeclare" />
+            <End Role="GateLog" EntitySet="GateLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GateLog_PurposeOfVisit" Association="Self.FK_GateLog_PurposeOfVisit">
+            <End Role="PurposeOfVisit" EntitySet="PurposeOfVisit" />
+            <End Role="GateLog" EntitySet="GateLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GateLog_User" Association="Self.FK_GateLog_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="GateLog" EntitySet="GateLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GateLog_VehicleType" Association="Self.FK_GateLog_VehicleType">
+            <End Role="VehicleType" EntitySet="VehicleType" />
+            <End Role="GateLog" EntitySet="GateLog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="vtdi_gatelogdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GateLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeIn" Type="DateTime" Precision="3" />
+          <Property Name="TimeOut" Type="DateTime" Precision="3" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VehicleTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PurposeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemsToDeclareID" Type="Int32" Nullable="false" />
+          <Property Name="VistiorTypeId" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="ItemsToDeclare" Relationship="Self.FK_GateLog_ItemsToDeclare" FromRole="GateLog" ToRole="ItemsToDeclare" />
+          <NavigationProperty Name="PurposeOfVisit" Relationship="Self.FK_GateLog_PurposeOfVisit" FromRole="GateLog" ToRole="PurposeOfVisit" />
+          <NavigationProperty Name="User" Relationship="Self.FK_GateLog_User" FromRole="GateLog" ToRole="User" />
+          <NavigationProperty Name="VehicleType" Relationship="Self.FK_GateLog_VehicleType" FromRole="GateLog" ToRole="VehicleType" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ItemsToDeclare">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GateLogs" Relationship="Self.FK_GateLog_ItemsToDeclare" FromRole="ItemsToDeclare" ToRole="GateLog" />
+        </EntityType>
+        <EntityType Name="PurposeOfVisit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GateLogs" Relationship="Self.FK_GateLog_PurposeOfVisit" FromRole="PurposeOfVisit" ToRole="GateLog" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="genderid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GateLogs" Relationship="Self.FK_GateLog_User" FromRole="User" ToRole="GateLog" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GateLogs" Relationship="Self.FK_GateLog_VehicleType" FromRole="VehicleType" ToRole="GateLog" />
+        </EntityType>
+        <Association Name="FK_GateLog_ItemsToDeclare">
+          <End Role="ItemsToDeclare" Type="Self.ItemsToDeclare" Multiplicity="1" />
+          <End Role="GateLog" Type="Self.GateLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemsToDeclare">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GateLog">
+              <PropertyRef Name="ItemsToDeclareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GateLog_PurposeOfVisit">
+          <End Role="PurposeOfVisit" Type="Self.PurposeOfVisit" Multiplicity="1" />
+          <End Role="GateLog" Type="Self.GateLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurposeOfVisit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GateLog">
+              <PropertyRef Name="PurposeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GateLog_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="GateLog" Type="Self.GateLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GateLog">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GateLog_VehicleType">
+          <End Role="VehicleType" Type="Self.VehicleType" Multiplicity="1" />
+          <End Role="GateLog" Type="Self.GateLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GateLog">
+              <PropertyRef Name="VehicleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="vtdi_gatelogdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GateLogs" EntityType="Self.GateLog" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="ItemsToDeclares" EntityType="Self.ItemsToDeclare" />
+          <EntitySet Name="PurposeOfVisits" EntityType="Self.PurposeOfVisit" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="VehicleTypes" EntityType="Self.VehicleType" />
+          <AssociationSet Name="FK_GateLog_ItemsToDeclare" Association="Self.FK_GateLog_ItemsToDeclare">
+            <End Role="ItemsToDeclare" EntitySet="ItemsToDeclares" />
+            <End Role="GateLog" EntitySet="GateLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GateLog_PurposeOfVisit" Association="Self.FK_GateLog_PurposeOfVisit">
+            <End Role="PurposeOfVisit" EntitySet="PurposeOfVisits" />
+            <End Role="GateLog" EntitySet="GateLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GateLog_User" Association="Self.FK_GateLog_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="GateLog" EntitySet="GateLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GateLog_VehicleType" Association="Self.FK_GateLog_VehicleType">
+            <End Role="VehicleType" EntitySet="VehicleTypes" />
+            <End Role="GateLog" EntitySet="GateLogs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="vtdi_gatelogdbModelStoreContainer" CdmEntityContainer="vtdi_gatelogdbEntities">
+          <EntitySetMapping Name="GateLogs">
+            <EntityTypeMapping TypeName="vtdi_gatelogdbModel.GateLog">
+              <MappingFragment StoreEntitySet="GateLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="PurposeId" ColumnName="PurposeId" />
+                <ScalarProperty Name="ItemsToDeclareID" ColumnName="ItemsToDeclareID" />
+                <ScalarProperty Name="VistiorTypeId" ColumnName="VistiorTypeId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="vtdi_gatelogdbModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsToDeclares">
+            <EntityTypeMapping TypeName="vtdi_gatelogdbModel.ItemsToDeclare">
+              <MappingFragment StoreEntitySet="ItemsToDeclare">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurposeOfVisits">
+            <EntityTypeMapping TypeName="vtdi_gatelogdbModel.PurposeOfVisit">
+              <MappingFragment StoreEntitySet="PurposeOfVisit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="vtdi_gatelogdbModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="genderid" ColumnName="genderid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleTypes">
+            <EntityTypeMapping TypeName="vtdi_gatelogdbModel.VehicleType">
+              <MappingFragment StoreEntitySet="VehicleType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
