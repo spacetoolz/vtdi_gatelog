@@ -31,6 +31,14 @@ namespace vtdi_gatelog
             var vehicle = cbvehicletype.SelectedValue;
             var DateTimeIn = DateTime.Now;
 
+            GateLog record = new GateLog();
+
+            record.FirstName = fname;
+            record.LastName = lname;
+            record.PurposeId = (int)purpose;
+            record.PlateNumber = platenum;
+            record.ItemsToDeclareID = Convert.ToInt32 (asset);
+
 
             MessageBox.Show("Record Submitted");
         }
