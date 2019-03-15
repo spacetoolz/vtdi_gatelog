@@ -35,7 +35,6 @@ namespace vtdi_gatelog
             Gate.MdiParent = this;
             Gate.Show();
             
-
         }
 
         private void logInToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,6 +48,9 @@ namespace vtdi_gatelog
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("User Management Button Clciked");
+            UserManagement userManagement = new UserManagement();
+            userManagement.MdiParent = this;
+            userManagement.Show();
         }
 
         private void schedulingToolStripMenuItem_Click(object sender, EventArgs e)
