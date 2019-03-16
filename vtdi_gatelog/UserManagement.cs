@@ -39,11 +39,42 @@ namespace vtdi_gatelog
                     q.FirstName,
                     q.LastName,
                     q.username,
-                    //q.Email,
-                    //q.genderid;
+                    q.genderid,
+                    // q.email // not present in my database
                 }).ToList();
 
             gridviewuserinfo.DataSource = GridViewData;
+        }
+
+        private void btsaveuser_Click(object sender, EventArgs e)
+        {
+            
+
+            var random = new Random();
+            var fname = tbfirstName.Text;
+            var lname = tbLastName.Text;
+            var email = tbemail.Text;
+            var username = tbusername.Text;
+            var gender = Convert.ToInt32(cbgender.SelectedValue);
+
+            var password = $"{fname[0]}{lname[0]}{random.Next(1,100)}";
+
+            var record = new User {
+
+                FirstName = fname,
+                LastName = lname,
+                genderid = gender,
+                DateCreated = DateTime.Now,
+                username = username,
+                password = password,             
+                
+            };
+
+
+            _dbContext.Users.Add(record);
+            //_dbContext.SaveChanges();
+            MessageBox.Show("Record Saved");
+
         }
     }
 }
